@@ -8,6 +8,7 @@ public class MergeSort {
 		showArray(array1);
 		mergeSort(array1);
 		showArray(array1);
+		partition(array1);
 		
 	}
 	
@@ -23,6 +24,22 @@ public class MergeSort {
 		}
 		System.out.printf("]\n");
 	}
+		
+		public static void partition(int[] theArray) {
+			int mid=theArray.length/2;
+			int[] left = new int[mid];
+			int[] right=new int[mid];
+			
+			for(int i=0; i<theArray.length; i++) {
+				if(i<mid) {
+					left[i]=theArray[i];
+				}else if(i>=mid) {
+					right[i]=theArray[i];
+					}
+			}
+			showArray(left);
+		}//Partition
+	
 	
 
 	
