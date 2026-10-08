@@ -1,14 +1,16 @@
 package mergesort;
 
+import java.lang.reflect.Array;
+
 public class MergeSort {
 
 	public static void main(String[] args) {
 		int[] array1 = {11,43,87,27,54,8,32,71,44,12};
 		
+		
 		showArray(array1);
 		mergeSort(array1);
-		showArray(array1);
-		partition(array1);
+		//showArray(array1);
 		
 	}
 	
@@ -27,17 +29,25 @@ public class MergeSort {
 		
 		public static void partition(int[] theArray) {
 			int mid=theArray.length/2;
-			int[] left = new int[mid];
-			int[] right=new int[mid];
+			int[] left;
+			int[] right;
+			if((mid*2)==theArray.length) {
+				left = new int[mid];
+				right=new int[mid];
+			}else {
+				left = new int[mid];
+				right=new int[mid+1];
+			}
 			
 			for(int i=0; i<theArray.length; i++) {
 				if(i<mid) {
 					left[i]=theArray[i];
 				}else if(i>=mid) {
-					right[i]=theArray[i];
+					right[i-mid]=theArray[i];
 					}
 			}
 			showArray(left);
+			showArray(right);
 		}//Partition
 	
 	
@@ -53,6 +63,14 @@ public class MergeSort {
 		//*  4. Replace the original array section with the merged     *
 		//*     array.                                                 *
 		//**************************************************************
+		int mid = theArray.length / 2;
+		partition(theArray);
+		if(theArray.length>1) {
+			mergeSort()
+			
+		}
+	
+		
 
 	}
 	
