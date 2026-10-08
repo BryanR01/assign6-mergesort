@@ -64,7 +64,7 @@ public class MergeSort {
 		int mid=theArray.length/2;
 		int[] leftArray;
 		int[] rightArray;
-		int[] newArray= new int[theArray.length];
+		int[] newArray= new int[10];
 		int index=0;
 		if((mid*2)==theArray.length) {
 			leftArray = new int[mid];
@@ -85,7 +85,12 @@ public class MergeSort {
 		showArray(rightArray);
 		
 		if(leftArray.length==1 && rightArray.length==1) {
-
+			for(int i=0; i<newArray.length; i++) {
+				newArray[i]=leftArray[0];
+				newArray[right]=rightArray[0];	//Error Here (Index -1 out of bounds for length 10)
+				right--;
+				showArray(newArray);
+			}
 		}else if(leftArray.length==1 && rightArray.length==2) {
 			mergeSort(rightArray);
 		}else if(leftArray.length==2 && rightArray.length==1) {
@@ -95,9 +100,8 @@ public class MergeSort {
 			mergeSort(rightArray);
 		}
 			
-		
 
-	}
+	}//MergeSort
 	
 	public static void mergeSort(int[] array) {
 		//**********************************************
