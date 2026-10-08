@@ -1,7 +1,5 @@
 package mergesort;
 
-import java.lang.reflect.Array;
-
 public class MergeSort {
 
 	public static void main(String[] args) {
@@ -26,7 +24,7 @@ public class MergeSort {
 		}
 		System.out.printf("]\n");
 	}
-		
+		/*
 		public static void partition(int[] theArray) {
 			int mid=theArray.length/2;
 			int[] left;
@@ -49,7 +47,7 @@ public class MergeSort {
 			showArray(left);
 			showArray(right);
 		}//Partition
-	
+	*/
 	
 
 	
@@ -63,13 +61,40 @@ public class MergeSort {
 		//*  4. Replace the original array section with the merged     *
 		//*     array.                                                 *
 		//**************************************************************
-		int mid = theArray.length / 2;
-		partition(theArray);
-		if(theArray.length>1) {
-			mergeSort()
-			
+		int mid=theArray.length/2;
+		int[] leftArray;
+		int[] rightArray;
+		int[] newArray= new int[theArray.length];
+		int index=0;
+		if((mid*2)==theArray.length) {
+			leftArray = new int[mid];
+			rightArray=new int[mid];
+		}else {
+			leftArray = new int[mid];
+			rightArray=new int[mid+1];
 		}
-	
+		
+		for(int i=0; i<theArray.length; i++) {
+			if(i<mid) {
+				leftArray[i]=theArray[i];
+			}else if(i>=mid) {
+				rightArray[i-mid]=theArray[i];
+				}
+		}
+		showArray(leftArray);
+		showArray(rightArray);
+		
+		if(leftArray.length==1 && rightArray.length==1) {
+
+		}else if(leftArray.length==1 && rightArray.length==2) {
+			mergeSort(rightArray);
+		}else if(leftArray.length==2 && rightArray.length==1) {
+			mergeSort(leftArray);
+		}else {
+			mergeSort(leftArray);
+			mergeSort(rightArray);
+		}
+			
 		
 
 	}
