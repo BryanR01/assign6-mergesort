@@ -61,11 +61,15 @@ public class MergeSort {
 		//*  4. Replace the original array section with the merged     *
 		//*     array.                                                 *
 		//**************************************************************
+		
 		int mid=theArray.length/2;
 		int[] leftArray;
 		int[] rightArray;
-		int[] newArray= new int[10];
+		int[] newArray= new int[theArray.length];
+		int leftI=0;
+		int rightI=0;
 		int index=0;
+		
 		if((mid*2)==theArray.length) {
 			leftArray = new int[mid];
 			rightArray=new int[mid];
@@ -85,12 +89,7 @@ public class MergeSort {
 		showArray(rightArray);
 		
 		if(leftArray.length==1 && rightArray.length==1) {
-			for(int i=0; i<newArray.length; i++) {
-				newArray[i]=leftArray[0];
-				newArray[right]=rightArray[0];	//Error Here (Index -1 out of bounds for length 10)
-				right--;
-				showArray(newArray);
-			}
+			//return;
 		}else if(leftArray.length==1 && rightArray.length==2) {
 			mergeSort(rightArray);
 		}else if(leftArray.length==2 && rightArray.length==1) {
@@ -99,7 +98,36 @@ public class MergeSort {
 			mergeSort(leftArray);
 			mergeSort(rightArray);
 		}
-			
+		
+		while(leftI<leftArray.length && rightI<rightArray.length) {
+			if(leftArray[leftI]<= rightArray[rightI]) {
+				newArray[index]=leftArray[leftI];
+				leftI++;
+			}else {
+				newArray[index]=rightArray[rightI];
+				rightI++;
+			}
+			index++;
+		}//while
+		
+		while(leftI<leftArray.length) {
+			newArray[index]= leftArray[leftI];
+			leftI++;
+			index++;
+		}
+		
+		while(rightI<rightArray.length) {
+			newArray[index]= rightArray[rightI];
+			rightI++;
+			index++;
+		}
+		
+		//Other parts need to see the sorted array instead of new array.
+		for(int i=0; i<theArray.length; i++) {
+			theArray[i]=newArray[i];
+		}
+		
+		showArray(newArray);
 
 	}//MergeSort
 	
